@@ -1,0 +1,30 @@
+Game design
+
+    * director
+        Attributes:
+            • jumper
+            • is_playing
+            • secret_word
+            • terminal_service
+        Methods:
+            • get_inputs
+            • do_updates
+            • do_outputs
+
+    * jumper
+            Attributes:
+            •
+        Methods:
+            •
+
+    * secret_word
+        Attributes:
+            •
+        Methods:
+            •
+
+    * terminal_service
+        Attributes:
+            •
+        Methods:
+            •
