@@ -13,18 +13,23 @@ Game design
 
     * jumper
             Attributes:
-            •
+            • guesses
+            • jumper
         Methods:
-            •
+            • 
 
     * secret_word
         Attributes:
-            •
+            • word_list = [] #a list of words
+            • chosen_word = "" #a random word from a list
+            • word_lenght = "" #the lenght of the chosen_word
+            • hidden_word = [] #the chosen word splitted into characters
         Methods:
-            •
+            • get_word #chooses a word from a word_list and splits into characters
+            • get_puzzle #a copy of chosen_work but reveals only characters with a True boolen condition
 
     * terminal_service
-        Attributes:
-            •
         Methods:
-            •
+            • read_text
+            • read_number
+            • write_text
