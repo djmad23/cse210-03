@@ -18,7 +18,7 @@ Game design
         Methods:
             • 
 
-    * secret_word
+    * word
         Attributes:
             • word_list = [] #a list of words
             • chosen_word = "" #a random word from a list
