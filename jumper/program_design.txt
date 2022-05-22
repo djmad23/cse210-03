@@ -4,8 +4,9 @@ Game design
         Attributes:
             • _jumper
             • _is_playing
-            • _secret_word
+            • _word
             • _terminal_service
+            • _chosen_letter
         Methods:
             • _get_inputs
             • _do_updates
@@ -21,7 +22,7 @@ Game design
     * word
         Attributes:
             • _word_list = [] #a list of words
-            • _chosen_word = "" #a random word from a list
+            • _secret_word = "" #a random word from a list
             • _word_lenght = "" #the lenght of the chosen_word
             • _hidden_word = [] #the chosen word splitted into characters
         Methods:
