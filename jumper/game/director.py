@@ -1,5 +1,5 @@
 from game.terminal_service import TerminalService
-from game.secret_word import SecretWord
+from game.word import SecretWord
 from game.jumper import Jumper
 
 
