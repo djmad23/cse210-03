@@ -1,4 +1,3 @@
-
 class TerminalService:
     """A service that handles terminal operations.
     
@@ -8,11 +7,9 @@ class TerminalService:
      
     def read_text(self, prompt):
         """Gets text input from the terminal. Directs the user with the given prompt.
-
         Args: 
             self (TerminalService): An instance of TerminalService.
             prompt (string): The prompt to display on the terminal.
-
         Returns:
             string: The user's input as text.
         """
@@ -20,11 +17,9 @@ class TerminalService:
 
     def read_number(self, prompt):
         """Gets numerical input from the terminal. Directs the user with the given prompt.
-
         Args: 
             self (TerminalService): An instance of TerminalService.
             prompt (string): The prompt to display on the terminal.
-
         Returns:
             float: The user's input as a number.
         """
@@ -32,7 +27,6 @@ class TerminalService:
         
     def write_text(self, text):
         """Displays the given text on the terminal. 
-
         Args: 
             self (TerminalService): An instance of TerminalService.
             text (string): The text to display.
