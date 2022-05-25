@@ -85,7 +85,7 @@ class Director:
         # print(F"the missed letters list {missed_letters}")
         self._terminal_service.write_text(f"\nThe wrong letters you have used so far are: {missed_letters}")
         print(F"The hidden word is {word}")
-        # print(self._updated_hidden_word)
+        print(self._updated_hidden_word)
         # print(f"The guess was {guess_right_wrong}")
         # print(f"won {won_lost}")
         

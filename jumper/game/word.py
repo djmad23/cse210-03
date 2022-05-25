@@ -28,7 +28,7 @@ class Word:
         self._hidden_word_as_list = list(self._hidden_word)
     
         self._missed_letters = []
-        self._word_updated = "_"
+        self._word_updated =  ' '.join(self._hidden_word_as_list)
 
         self._guessed = False
         self._you_won = False
@@ -68,11 +68,8 @@ class Word:
             self._hidden_word_as_list = self._hidden_word_as_list         
             self._word_updated = ' '.join(self._hidden_word_as_list)
 
-        letter_locations = [i for i, letter in enumerate(self._word) if letter == "_"]
-        for index in letter_locations:
-            self._hidden_word_as_list[index] = guess  
-            self._hidden_word_as_list = self._hidden_word_as_list         
-            self._word_updated = ' '.join(self._hidden_word_as_list)
+
+     
 
 
         if guess in self._word: # Check if user guess is in the word
