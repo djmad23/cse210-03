@@ -1,7 +1,7 @@
 
 
 import random
-from game.words_list import word_list
+# from game.words_list import word_list
 
 
 class Word:
@@ -20,9 +20,12 @@ class Word:
         Args:
             secret_word (str): The secret word (randomly generated from a text file.)
         """
-       
-        self._word_normal = random.choice(word_list)
-        self._word = self._word_normal.upper()
+        
+        # self._word_normal = random.choice(word_list)
+        # self._word = self._word_normal.upper()
+
+        self._word = self.get_secret_word()
+        # self._word = self._word_normal.upper()
 
         self._hidden_word = ("_") * len(self._word)
         self._hidden_word_as_list = list(self._hidden_word)
@@ -33,6 +36,13 @@ class Word:
         self._guessed = False
         self._you_won = False
         self._first_guess = False
+
+    def get_secret_word(self):
+        with open("words.txt","r") as word:
+            lines = word.readlines()
+            secret_word = random.choice(lines)
+            secret_word = secret_word.strip()
+        return secret_word.upper()
 
     def get_first_guess(self):
          
