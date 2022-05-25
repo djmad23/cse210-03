@@ -5,7 +5,7 @@ class Jumper:
     
     Attributes:
         _guesses (int): The number of guesses left
-        _message (str): The text art representation of the paratrooper at different stages of parachute failer allong with message.
+        _message (str): The text art representation of the paratrooper at different stages of parachute failer along with message.
     """
 
     def __init__(self):
