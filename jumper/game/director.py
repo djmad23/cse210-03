@@ -1,7 +1,7 @@
 from game.terminal_service import TerminalService
 from game.word import Word
 from game.jumper import Jumper
-
+import os
 
 class Director:
     """A person who directs the game. 
@@ -15,7 +15,7 @@ class Director:
         terminal_service: For getting and displaying information on the terminal.
 
         guess (str): User's letter guess
-        updated_secret_word (str): The hidden word. IF the word is SECRET an eanample could be as follows..' EXAMPLE:  S _ C R _ T  
+        updated_secret_word (str): The hidden word. IF the word is SECRET an eanample could be as follows..' EXAMPLE:  S _ C R _ T     
     """
 
     def __init__(self):
@@ -44,8 +44,7 @@ class Director:
             self._do_outputs()
 
     def _get_inputs(self):
-        """ Displays intro message from jumper class. Gets a ramdom secret word from word class. Gets players letter guess. 
-        Gets a boolean to turn off intro message. 
+        """Gets a ramdom secret word. Gets players letter guess
 
         Args:
             self (Director): An instance of Director.
@@ -54,66 +53,68 @@ class Director:
         first_guess = self._secret_word.get_first_guess() # first guess booleon switch.
 
         if first_guess == False:
-            start_message = self._jumper.get_intro_message()  # get intro message 
+            hidden_word= self._secret_word.get_hidden_word()
+            start_message = self._jumper.get_intro_message(hidden_word)  # get intro message 
             self._terminal_service.write_text(start_message) # display into message
         
         
         self._guess = self._terminal_service.read_text("\nGuess a Capital letter [A-Z]: ")
-
-       
-        
 
     def _do_updates(self):
         """Updates the secret word
 
         Args:
             self (Director): An instance of Director.
-            updated_secret_word (str): The hidden word. IF the word is SECRET an eanample could be as follows..' EXAMPLE:  S _ C R _ T
         """
         
         self._updated_hidden_word = self._secret_word.update_hidden_word(self._guess)
         
          
     def _do_outputs(self):
- 
-        """desplayes secret word.  Displays jumper text art. Displays missed letters list. 
-        Gets boolean switches for winning the game and if the users guess was correct or not. 
-        End game conditions.
+        """desplayes secret word.  Displays jumper text art
 
         Args:
             self (Director): An instance of Director.
-            word (str): Holds the random word (NOT HIDDEN)    
-            missed_letters (list): Holds the letters the user guessed that are not in the word
-            guess_right_wrong (bool): Shows if guess was correct or not
-            won_lost (bool):  Shows if user one or not. Triggers when all letters in word are guessed  
-            guess (str): Users letter guess
-            message (str): Message to be displayed taken from jumper class.
-            guesses (int): Number of guesses the user has left
         """
+       
+ 
         word = self._secret_word.get_word()
         missed_letters = self._secret_word.get_missed_letters()
         guess_right_wrong = self._secret_word.get_guessed_bool()
         won_lost = self._secret_word.get_won_bool()
         
-
-        # print(F"the missed letters list {missed_letters}")
+        print(F"\nThe hidden word is {word}  displayed for testing")
+            
         self._terminal_service.write_text(f"\nThe wrong letters you have used so far are: {missed_letters}")
-        print(F"The hidden word is {word}   Displayed for testing.")
-        # print(self._updated_hidden_word)
-        # print(f"The guess was {guess_right_wrong}")
-        # print(f"won {won_lost}")
-        
-        guess = self._guess.upper() # make guess uppercase incase user typed lowercase
-        message = self._jumper.get_messages(guess_right_wrong, won_lost, self._updated_hidden_word, guess, word)
 
-        self._terminal_service.write_text(message)
+        already_guessed = self._secret_word.get_already_guessed_bool()
+        if already_guessed == True:
+            self._terminal_service.write_text(f"You already guessed that letter. Please try again. ")
 
+        if already_guessed == False:
+            guess = self._guess.upper() # make guess uppercase incase user typed lowercase
+            message = self._jumper.get_messages(guess_right_wrong, won_lost, self._updated_hidden_word, guess, word)
+            self._terminal_service.write_text(message)
+
+
+        # Ending the game logic
         if won_lost == True:
-            self._is_playing = False
+            restart = self._terminal_service.read_text("\nDo you want to play again?  y/n ")
+            if restart.upper() == "N": 
+                self._is_playing = False
+            if restart.upper() == "Y":
+                os.system("python cse210-03/jumper/__main__.py")
+                exit()
+            else:
+                self._is_playing = False
 
         guesses = self._jumper.get_guesses()
         if guesses == 0:
-           self._is_playing = False
-        # print(f"number of guesses {guesses}")
-        # print(f"The guess was {guess_right_wrong}")
-        # print(f"won {won_lost}")
+            restart = self._terminal_service.read_text("\nDo you want to play again?  y/n ")
+            if restart.upper() == "N": 
+                self._is_playing = False
+            if restart.upper() == "Y":
+                os.system("python cse210-03/jumper/__main__.py")
+                exit()
+            else:
+                self._is_playing = False

@@ -24,12 +24,13 @@ class Jumper:
 
         return self._guesses
 
-    def get_intro_message(self):
+    def get_intro_message(self, updated_hidden_word):
         """ Returns jumper intro text art along with message. 
         
         """
 
         self._message = (f"""\nThe Parashooter jumped out of a plain! If you can guess the hidden word they will land safely. 
+The hidden word is {updated_hidden_word}.
   _________
  /         \\
 / _   _   _ \\  
