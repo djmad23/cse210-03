@@ -30,7 +30,7 @@ class Jumper:
         """
 
         self._message = (f"""\nThe Parashooter jumped out of a plain! If you can guess the hidden word they will land safely. 
-The hidden word is {updated_hidden_word}.
+The secret word is {updated_hidden_word}.
   _________
  /         \\
 / _   _   _ \\  

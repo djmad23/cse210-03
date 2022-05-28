@@ -83,7 +83,7 @@ class Director:
         guess_right_wrong = self._secret_word.get_guessed_bool()
         won_lost = self._secret_word.get_won_bool()
         
-        print(F"\nThe hidden word is {word}  displayed for testing")
+        #print(F"\nThe hidden word is {word}  displayed for testing")
             
         self._terminal_service.write_text(f"\nThe wrong letters you have used so far are: {missed_letters}")
 
